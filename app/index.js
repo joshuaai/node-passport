@@ -11,13 +11,13 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./authentication').init(app)
+require('./auth').init(app)
 
 app.use(session({
   store: new RedisStore({
     url: config.redisStore.url
   }),
-  secret: config.redisStore.secret,
+  secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
 }));
